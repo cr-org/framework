@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.vaadin.testbench.elements.MenuBarElement;
 import com.vaadin.tests.tb3.MultiBrowserTest;
@@ -64,10 +65,7 @@ public class MenuBarUITest extends MultiBrowserTest {
         menuBar.clickItem("Export..");
         assertTrue(isItemVisible("As PDF..."));
 
-        // The Edit menu will be opened by moving the mouse over the item (done
-        // by clickItem). The first click then actually closes the menu.
-        menuBar.clickItem("Edit");
-        menuBar.clickItem("Edit");
+        moveToItem(menuBar, "Edit");
         assertFalse(isItemVisible("Save As.."));
         assertTrue(isItemVisible("Paste"));
 
@@ -135,7 +133,24 @@ public class MenuBarUITest extends MultiBrowserTest {
         return false;
     }
 
+    private void moveToItem(WebElement parent, String item) {
+        for (WebElement webElement : getItemCaptions(parent)) {
+            try {
+                if (webElement.getText().equals(item)) {
+                    new Actions(getDriver()).moveToElement(webElement)
+                            .build().perform();
+                }
+            } catch (WebDriverException e) {
+                // stale, detached element is not visible
+            }
+        }
+    }
+
     private List<WebElement> getItemCaptions() {
         return findElements(By.className("v-menubar-menuitem-caption"));
+    }
+
+    private List<WebElement> getItemCaptions(WebElement parent) {
+        return parent.findElements(By.className("v-menubar-menuitem-caption"));
     }
 }
