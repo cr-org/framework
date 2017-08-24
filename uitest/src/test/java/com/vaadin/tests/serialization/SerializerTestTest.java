@@ -31,9 +31,9 @@ public class SerializerTestTest extends MultiBrowserTest {
                 "sendJson: {\"b\":false,\"s\":\"JSON\"}, null, \"value\"",
                 getLogRow(logRow++));
         Assert.assertEquals(
-                "sendDateArray: January 31, 2013 10:00:00 PM UTC January 31, 2012 10:00:00 PM UTC",
+                "sendDateArray: January 31, 2013 12:00:00 AM UTC January 31, 2012 12:00:00 AM UTC",
                 getLogRow(logRow++));
-        Assert.assertEquals("sendDate: May 31, 2013 8:12:13 AM UTC",
+        Assert.assertEquals("sendDate: May 1, 2013 11:12:13 AM UTC",
                 getLogRow(logRow++));
         Assert.assertEquals("sendDate: January 1, 1970 12:00:00 AM UTC",
                 getLogRow(logRow++));
@@ -86,7 +86,7 @@ public class SerializerTestTest extends MultiBrowserTest {
         Assert.assertEquals(
                 "state.dateArray: Thu Jan 01 02:00:00 GMT+200 1970 Thu Jan 01 02:00:00 GMT+200 1970",
                 getLogRow(logRow++));
-        Assert.assertEquals("state.date2: Fri May 31 11:12:13 GMT+300 2013",
+        Assert.assertEquals("state.date2: Wed May 01 14:12:13 GMT+300 2013",
                 getLogRow(logRow++));
         Assert.assertEquals("state.date1: Thu Jan 01 02:00:00 GMT+200 1970",
                 getLogRow(logRow++));
