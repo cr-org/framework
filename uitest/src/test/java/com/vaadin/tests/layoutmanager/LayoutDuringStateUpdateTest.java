@@ -15,6 +15,7 @@
  */
 package com.vaadin.tests.layoutmanager;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -29,8 +30,8 @@ public class LayoutDuringStateUpdateTest extends SingleBrowserTest {
         openTestURL();
 
         WebElement label = findElement(By.className("gwt-Label"));
-
-        Assert.assertEquals("Layout phase count: 1", label.getText());
+        Assert.assertThat(label.getText(),
+                CoreMatchers.containsString("Aborted layout count: 1"));
     }
 
 }

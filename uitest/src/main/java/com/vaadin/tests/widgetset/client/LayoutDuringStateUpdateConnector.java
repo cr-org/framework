@@ -26,6 +26,7 @@ import com.vaadin.tests.widgetset.server.LayoutDuringStateUpdateComponent;
 public class LayoutDuringStateUpdateConnector extends AbstractComponentConnector
         implements PostLayoutListener {
     private int layoutCount = 0;
+    private int abortedLayoutCount = 0;
 
     @Override
     protected void init() {
@@ -45,12 +46,13 @@ public class LayoutDuringStateUpdateConnector extends AbstractComponentConnector
         try {
             getLayoutManager().layoutNow();
         } catch (AssertionError e) {
-            // Ignore
+            abortedLayoutCount++;
         }
     }
 
     private void updateLabelText() {
-        getWidget().setText("Layout phase count: " + layoutCount);
+        getWidget().setText("Layout phase count: " + layoutCount
+                + " Aborted layout count: " + abortedLayoutCount);
     }
 
     @Override
