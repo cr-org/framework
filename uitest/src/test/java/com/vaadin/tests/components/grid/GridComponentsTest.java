@@ -141,6 +141,7 @@ public class GridComponentsTest extends MultiBrowserTest {
         Assert.assertTrue("Notification should contain given text",
                 $(NotificationElement.class).first().getText()
                         .contains(string));
+        waitUntil(driver -> !isElementPresent(NotificationElement.class), 10);
     }
 
     private void assertNoButton(int i) {
