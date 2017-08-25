@@ -38,6 +38,13 @@ public class LayoutDetectorConnector extends AbstractComponentConnector
                 rpcCount++;
                 updateText();
             }
+
+            @Override
+            public void resetCounters() {
+                layoutCount = 0;
+                rpcCount = 0;
+                updateText();
+            }
         });
     }
 

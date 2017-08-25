@@ -81,6 +81,9 @@ public class NoLayout extends AbstractReindeerTestUI {
                         markAsDirty();
                     }
                 }));
+
+        addComponent(new Button("Reset counters",
+                clickEvent -> layoutDetector.resetCounters()));
     }
 
     @Override

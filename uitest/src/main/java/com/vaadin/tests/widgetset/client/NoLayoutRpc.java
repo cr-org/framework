@@ -23,4 +23,6 @@ public interface NoLayoutRpc extends ClientRpc {
     @NoLayout
     public void doRpc();
 
+    @NoLayout
+    public void resetCounters();
 }

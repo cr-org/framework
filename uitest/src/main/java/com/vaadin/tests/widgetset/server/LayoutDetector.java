@@ -23,4 +23,8 @@ public class LayoutDetector extends AbstractComponent {
     public void doNoLayoutRpc() {
         getRpcProxy(NoLayoutRpc.class).doRpc();
     }
+
+    public void resetCounters() {
+        getRpcProxy(NoLayoutRpc.class).resetCounters();
+    }
 }
